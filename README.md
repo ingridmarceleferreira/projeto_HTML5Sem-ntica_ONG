@@ -1,4 +1,4 @@
-# projeto_HTML5Sem-ntica_ONG
+# projeto_HTML5Semantica_ONG
 Sistema web completo que oferece às ONGs uma presença digital profissional e funcional.
 O sistema contempla diferentes tipos de usuários e funcionalidades específicas para cada perfil: Administrador da ONG, Voluntário, Doador/apoiador;
 Visitante.
