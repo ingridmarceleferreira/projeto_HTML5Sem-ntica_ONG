@@ -2,7 +2,7 @@
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport content="widht=device-widht, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cadastro | Torne-se um voluntário ou doador </title>
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -37,19 +37,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="CPF"> CPF: </label>
-                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required
+                       <label for="cpf"> CPF: </label>
+                       <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required
                              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00">                           
                     </div>
 
-                    <div class="form-cadastro">
-                         <label for="telefone"> Telefone: </label>
+                    <div class="form-group"> 
+                    <label for="telefone"> Telefone: </label>
                          <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" required
                              pattern="\(\d{2}\) \d{4,5}-\d{4}" title="Formato: (XX) XXXX-XXXXX">  
                     </div>
 
-                    <div class="form">
-                        <label for="dataNascimento"> Data de dataNascimento: </label>
+                    <div class="form-group"> 
+                    <label for="dataNascimento"> Data de Nascimento: </label>
                         <input type="date" id="dataNascimento" name="dataNascimento" required>
                     </div>
 
@@ -83,11 +83,9 @@
                             </select>
                     </div>
                 </fieldset>
-
-                <button type="submit" class="btn btn-principal">Enviar Cadastro</button>
-                <button type="reset" class="btn btn-secundario">Limpar Formulário</button>
-
-            </form>
+            <button type="submit" class="btn btn-principal">Enviar Cadastro</button>
+            <button type="reset" class="btn btn-secundario">Limpar Formulário</button>
+         </form>
         </section>
      </main>
 
