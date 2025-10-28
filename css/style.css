@@ -106,25 +106,69 @@ SISTEMA DE GRID (12 COLUNAS) - CLASSES AUXILIARES
 ===============================================
 */
 
-/* Faz um item ocupar todas as 12 colunas (útil para títulos de seção) */
+/* ===============================================
+SISTEMA DE GRID RESPONSIVO (12 COLUNAS) - MOBILE-FIRST
+===============================================
+*/
+
+/*
+* MOBILE-FIRST (Padrão):
+* Por padrão, TUDO ocupa 12 colunas (largura total).
+* pro site funcionar bem em celulares*/
+.col-4,
+.col-6,
+.col-8,
 .col-12 {
-  grid-column: span 12;
+  grid-column: span 12; /* Todos ocupam 12 colunas no celular */
 }
 
-/* Faz um item ocupar metade (6 colunas) */
-.col-6 {
-  grid-column: span 6;
+/*
+* BREAKPOINT 1: Tablets (ex: 768px)
+* (Requisito: 5 breakpoints)
+* Se a tela for MAIOR que 768px, aplicamos o grid de 12 colunas.
+*/
+@media (min-width: 768px) {
+  
+  /* Faz um item ocupar um terço (4 colunas) */
+  .col-4 {
+    grid-column: span 4;
+  }
+  
+  /* Faz um item ocupar metade (6 colunas) */
+  .col-6 {
+    grid-column: span 6;
+  }
+  
+  /* Faz um item ocupar dois terços (8 colunas) */
+  .col-8 {
+    grid-column: span 8;
+  }
+  
+  /* .col-12 já ocupa 12, então não precisamos redeclará-lo */
 }
 
-/* Faz um item ocupar um terço (4 colunas) - (Útil para os pilares) */
-.col-4 {
-  grid-column: span 4;
+/* BREAKPOINT 2: Desktops Pequenos (ex: 992px)*/
+@media (min-width: 992px) {
+
+  /* body { font-size: 1.05rem; } */
+  
+  /* Centraliza o formulário de cadastro melhor em telas médias */
+  #form-cadastro {
+    grid-column: 2 / 12; /* Ocupa 10 colunas */
+  }
 }
 
-/* Faz um item ocupar dois terços (8 colunas) */
-.col-8 {
-  grid-column: span 8;
+/* * BREAKPOINT 3: Desktops Largos (ex: 1200px)
+* (Aqui o layout de 8/4 do index.html brilha)
+*/
+@media (min-width: 1200px) {
+  /* Restaura o layout original do formulário para telas largas */
+  #form-cadastro {
+     grid-column: 3 / 11; /* Ocupa 8 colunas (como antes) */
+  }
 }
+
+/* (Adicionerei Breakpoints 4 e 5 quando fizer o menu hambúrguer) */
 
 /* ===============================================
 COMPONENTE: CABEÇALHO (HEADER) E NAVEGAÇÃO
