@@ -321,3 +321,104 @@ Requisitos: Botões com estados visuais (hover, focus, active).
   border-color: var(--cor-primaria-escura);
   color: var(--cor-superficie);
 }
+
+/* ===============================================
+COMPONENTE: FORMULÁRIOS ESTILIZADOS
+Requisitos: Estilo e validação visual.
+===============================================
+*/
+
+/* 1. Estilização do Contêiner do Formulário */
+#form-cadastro {
+  background-color: var(--cor-superficie)
+  border-radius: 8px;
+  padding: var(--espaco-l); /* 32px */
+  margin-bottom: var(--espaco-l);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  
+  /* Faz o formulário ocupar 8 colunas (deixando espaço nas laterais) */
+  /* Centraliza no grid */
+  grid-column: 3 / 11; 
+  /* Começa na coluna 3 e vai até a 11 (8 colunas no total) */
+}
+
+/* 2. Agrupamento Lógico (<fieldset> e <legend>) */
+fieldset {
+  border: 1px solid var(--cor-borda); /* Borda sutil */
+  border-radius: 5px;
+  padding: var(--espaco-m); /* 24px */
+  margin-bottom: var(--espaco-l); /* Espaço entre os fieldsets */
+}
+
+legend {
+  font-weight: bold;
+  color: var(--cor-primaria);
+  padding: 0 var(--espaco-xs); /* 8px nas laterais */
+  margin-left: var(--espaco-s); /* Alinha com o texto dos campos */
+}
+
+/* 3. Grupo de Formulário (<div class="form-group">) */
+.form-group {
+  margin-bottom: var(--espaco-m); /* 24px de espaço abaixo de cada campo */
+}
+
+/* 4. Rótulos (<label>) */
+.form-group label {
+  display: block; /* Garante que o input fique abaixo */
+  margin-bottom: var(--espaco-xs); /* 8px de espaço acima do input */
+  font-weight: bold;
+  color: var(--cor-texto-secundario);
+}
+
+/* 5. Campos de Entrada (<input>, <textarea>, <select>) */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group textarea,
+.form-group select {
+  width: 100%; /* Ocupa toda a largura do .form-group */
+  padding: var(--espaco-s); /* 16px */
+  border: 1px solid var(--cor-borda);
+  border-radius: 5px;
+  font-family: var(--fonte-familia-principal);
+  font-size: var(--fonte-normal);
+  background-color: var(--cor-fundo);
+  
+  /* Efeito */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 6. Validação Visual e Interação (:focus) */
+
+/* Ao clicar no campo */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none; /* Remove o contorno padrão do navegador */
+  border-color: var(--cor-primaria); /* Muda a cor da borda para a cor primária */
+  box-shadow: 0 0 0 3px rgba(68, 77, 146, 0.1); /* Adiciona um brilho sutil */
+}
+
+/* Estilo para campos inválidos (ex: email incorreto, campo obrigatório vazio) */
+/* Isso usa a validação nativa do HTML5 já configurada */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown),
+.form-group select:invalid {
+  border-color: var(--cor-erro); /* Borda vermelha para erro */
+  background-color: #fdecea; /* Fundo rosa claro*/
+}
+
+/* Opcional: Estilo para campos válidos */
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown),
+.form-group select:valid {
+   border-color: var(--cor-sucesso); /* Borda verde para sucesso */
+}
+
+/* 7. Botões no Formulário (Já estilizados pela classe .btn) */
+#form-cadastro button[type="submit"],
+#form-cadastro button[type="reset"] {
+  margin-top: var(--espaco-m); /* Espaço acima dos botões */
+  margin-right: var(--espaco-s); /* Espaço entre os botões */
+}
