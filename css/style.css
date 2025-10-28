@@ -600,3 +600,88 @@ Requisitos: Sistema de categorização.
   background-color: var(--cor-erro);
   color: var(--cor-superficie);
 }
+
+/* ===============================================
+COMPONENTE: MENU DROPDOWN
+Requisitos: Navegação sofisticada.
+===============================================
+*/
+
+/* 1. O contêiner <li> que segura o dropdown */
+.dropdown {
+  position: relative; /* Chave para o posicionamento do submenu */
+}
+
+/* 2. O submenu (a lista aninhada) */
+.dropdown-menu {
+  display: none; /* ESCONDIDO por padrão */
+  position: absolute; /* Posição absoluta em relação ao <li> pai */
+  top: 100%; /* Aparece logo abaixo do link "Nossos Projetos" */
+  left: 0;
+  
+  /* Estilização do card do dropdown */
+  background-color: var(--cor-superficie); 
+  border: 1px solid var(--cor-borda);
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  min-width: 200px; /* Largura mínima do dropdown */
+  
+  /* Remove o gap do flex do pai (para não herdar) */
+  flex-direction: column; 
+  align-items: flex-start;
+  padding: var(--espaco-xs) 0; /* 8px em cima/baixo */
+  z-index: 10; /* Garante que fique acima de outro conteúdo */
+}
+
+/* 3. Os links dentro do dropdown */
+.dropdown-menu li {
+  width: 100%; /* Links ocupam 100% da largura */
+}
+
+.dropdown-menu a {
+  /* Substitui o estilo do menu principal */
+  display: block; /* Ocupa a linha inteira */
+  padding: var(--espaco-s); /* 16px */
+  width: 100%;
+  color: var(--cor-texto-secundario);
+  font-size: var(--fonte-pequena);
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--cor-fundo); /* Fundo cinza ao passar o mouse */
+  color: var(--cor-primaria);
+}
+
+/* 4. Mostrar o dropdown no hover (APENAS EM DESKTOP) */
+@media (min-width: 992px) { /* (O mesmo breakpoint do menu hambúrguer) */
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    display: block; /* Mostra o submenu */
+  }
+}
+
+/* 5. Ajuste no menu mobile (para o dropdown não quebrar) */
+@media (max-width: 991px) {
+  .dropdown {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* No mobile, o dropdown já está visível (porque o display: flex foi removido) */
+  .dropdown-menu {
+    display: flex; /* Garante que está visível */
+    position: static; /* Remove o posicionamento absoluto */
+    box-shadow: none;
+    border: none;
+    width: 100%;
+    background-color: transparent;
+    padding: 0;
+    margin-top: var(--espaco-s); /* Espaço abaixo do link pai */
+  }
+  
+  .dropdown-menu a {
+     font-size: var(--fonte-normal); /* Fonte um pouco menor */
+     color: var(--cor-texto-secundario);
+     background-color: var(--cor-fundo);
+  }
+}
