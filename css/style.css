@@ -209,3 +209,115 @@ Requisitos: Flexbox para alinhamento.
   background-color: var(--cor-primaria-escura);
   color: var(--cor-superficie);
 }
+
+/* ===============================================
+COMPONENTE: CARDS
+Requisitos: Sistema de cards responsivos.
+Usado em projetos.html e index.html (pilares).
+===============================================
+*/
+
+/* Estilo base para qualquer seção que deva parecer um "card".
+  Vamos aplicar isso nas seções de projetos.html
+*/
+.card-secao {
+  background-color: var(--cor-superficie); /* Fundo branco */
+  border-radius: 8px; /* Cantos arredondados */
+  padding: var(--espaco-l); /* 32px de espaçamento interno */
+  margin-bottom: var(--espaco-l); /* 32px de espaço abaixo do card */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave */
+  
+  /* Faz o card ocupar 12 colunas no grid principal */
+  grid-column: span 12; 
+}
+
+/* Estilo para os artigos *dentro* da seção "Nossos Pilares" (index.html) */
+#nossos-pilares article {
+  background-color: var(--cor-fundo); /* Fundo cinza claro, diferente */
+  padding: var(--espaco-m);
+  border-radius: 8px;
+}
+
+/* ===============================================
+COMPONENTE: BOTÕES (BUTTONS)
+Requisitos: Botões com estados visuais (hover, focus, active).
+===============================================
+*/
+
+/* 1. Botão Padrão (Base) */
+.btn {
+  display: inline-block; /* Permite padding mas flui com o texto */
+  padding: var(--espaco-s) var(--espaco-m); /* 16px 24px */
+  border: none;
+  border-radius: 5px;
+  font-family: var(--fonte-familia-principal);
+  font-size: var(--fonte-normal);
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  
+  /* Efeito suave de transição */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 2. Botão Principal (Call to Action) */
+/* Usado para "Quero Ajudar", "Enviar Cadastro" */
+.btn-principal {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-superficie);
+}
+
+/* 3. Botão Secundário (Limpar, etc.) */
+.btn-secundario {
+  background-color: var(--cor-texto-secundario); 
+  color: var(--cor-superficie); 
+}
+
+/* 4. ESTADOS VISUAIS (Hover, Focus, Active) */
+
+.btn:hover,
+.btn:focus {
+  outline: none;
+  /* Escurece ou muda a cor no hover/focus */
+  transform: translateY(-2px); /* Efeito sutil de levantar */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-principal:hover,
+.btn-principal:focus {
+  background-color: var(--cor-primaria-escura); 
+}
+
+.btn-secundario:hover,
+.btn-secundario:focus {
+  background-color: var(--cor-texto-principal); 
+}
+
+.btn:active {
+  transform: translateY(0); /* Volta ao normal ao clicar */
+  box-shadow: none;
+}
+
+/* Estilização específica dos botões de doação em projetos.html */
+.cards-doacao {
+  display: flex; /* REQUISITO: Usar flexbox para componentes */
+  flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+  gap: var(--espaco-s); /* 16px de espaço entre os botões */
+  margin-top: var(--espaco-s);
+}
+
+.btn-doacao {
+  flex-grow: 1; /* Faz os botões crescerem para ocupar o espaço */
+  background-color: var(--cor-fundo);
+  border: 2px solid var(--cor-borda);
+  color: var(--cor-primaria);
+  padding: var(--espaco-m);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-doacao:hover {
+  background-color: var(--cor-primaria-escura);
+  border-color: var(--cor-primaria-escura);
+  color: var(--cor-superficie);
+}
