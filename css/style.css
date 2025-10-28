@@ -166,7 +166,7 @@ Requisitos: Flexbox para alinhamento.
 
 /* Estilização do Logo (que está no HTML) */
 .logo-link img {
-  height: 70px; /* Altura do logo */
+  height: 100px; /* Altura do logo */
   width: auto;
   display: block; /* Remove espaço extra abaixo da imagem */
 }
