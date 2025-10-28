@@ -466,3 +466,93 @@ legend {
   margin-top: var(--espaco-m); /* Espaço acima dos botões */
   margin-right: var(--espaco-s); /* Espaço entre os botões */
 }
+
+/* ===============================================
+COMPONENTE: NAVEGAÇÃO MOBILE (MENU HAMBÚRGUER)
+Requisitos: Menu responsivo e breakpoints.
+===============================================
+*/
+
+/* 1. Estilo do Botão Hambúrguer (as 3 linhas) */
+.menu-hamburguer {
+  display: none; /* ESCONDIDO no Desktop (Mobile-First Invertido aqui) */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: var(--espaco-xs);
+  
+  /* Flexbox para empilhar as linhas */
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Espaço entre as linhas */
+}
+
+.hamburguer-linha {
+  display: block;
+  width: 25px; /* Largura da linha */
+  height: 3px; /* Espessura da linha */
+  background-color: var(--cor-primaria);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 2. Breakpoint 4 e 5: A Mágica da Responsividade (992px) */
+/* (Usando 992px como nosso breakpoint principal de "Tablet para Desktop") */
+
+@media (max-width: 991px) {
+  
+  /* QUANDO A TELA FOR PEQUENA (Mobile/Tablet): */
+
+  /* 2.1. Mostre o Botão Hambúrguer */
+  .menu-hamburguer {
+    display: flex; /* O botão aparece! */
+  }
+
+  /* 2.2. Esconda o Menu Principal (formato desktop) */
+  .menu-principal ul {
+    /* Esconde o menu fora da tela (para animar) */
+    position: fixed; /* Fica fixo na tela */
+    top: 0;
+    right: 0;
+    
+    /* Começa 100% à direita (fora da tela) */
+    transform: translateX(100%); 
+    
+    width: 80%; /* Ocupa 80% da tela quando aberto */
+    height: 100vh; /* Ocupa 100% da altura */
+    
+    /* Layout vertical */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--espaco-l); /* Espaçamento grande */
+    
+    background-color: var(--cor-superficie); /* Fundo branco */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  /* 2.3. Estilo dos links no menu aberto */
+  .menu-principal a {
+     font-size: var(--fonte-h3); /* Links ficam grandes */
+  }
+
+  /* 2.4 .menu-aberto */
+  /* Quando o JS adicionar esta classe, o menu desliza para dentro */
+  .menu-principal ul.menu-aberto {
+    transform: translateX(0%); /* Volta para a tela */
+  }
+
+  /* 2.5. Animação do botão (Opcional, mas profissional) */
+  /* Gira o X */
+  .menu-hamburguer.ativo .hamburguer-linha:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-hamburguer.ativo .hamburguer-linha:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-hamburguer.ativo .hamburguer-linha:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
