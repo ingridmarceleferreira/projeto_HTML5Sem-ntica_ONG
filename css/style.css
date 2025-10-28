@@ -556,3 +556,47 @@ Requisitos: Menu responsivo e breakpoints.
     transform: translateY(-8px) rotate(-45deg);
   }
 }
+
+/* ===============================================
+COMPONENTE: BADGES E TAGS
+Requisitos: Sistema de categorização.
+===============================================
+*/
+
+.badge {
+  display: inline-block; /* Para ficar ao lado do texto */
+  padding: 4px var(--espaco-xs); /* 4px em cima/baixo, 8px nas laterais */
+  font-size: 0.75rem; /* 12px (bem pequeno) */
+  font-weight: bold;
+  text-transform: uppercase; /* TUDO EM MAIÚSCULO */
+  letter-spacing: 0.5px; /* Espaçamento leve entre as letras */
+  border-radius: 4px; /* Cantos levemente arredondados */
+  
+  /* Cores padrão (neutras) */
+  background-color: var(--cor-borda);
+  color: var(--cor-texto-secundario);
+}
+
+/* Variação de Cor: Badge Primário (para tags de "Voluntariado", por ex.) */
+.badge-primario {
+  background-color: var(--cor-primaria-escura);
+  color: var(--cor-superficie); 
+}
+
+/* Variação de Cor: Badge Secundário (para "Urgente" ou "Doação") */
+.badge-secundario {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-superficie); 
+}
+
+/* Variação de Cor: Badge de Sucesso (para "Novo") */
+.badge-sucesso {
+  background-color: var(--cor-sucesso);
+  color: var(--cor-superficie);
+}
+
+/* Variação de Cor: Badge de Erro (para "Urgente") */
+.badge-erro {
+  background-color: var(--cor-erro);
+  color: var(--cor-superficie);
+}
