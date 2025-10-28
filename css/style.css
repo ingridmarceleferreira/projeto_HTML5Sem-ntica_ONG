@@ -1,0 +1,127 @@
+/* ===============================================
+ENTREGA II - SISTEMA DE DESIGN (VARIÁVEIS GLOBAIS)
+Define as cores, fontes e espaçamentos do projeto.
+===============================================
+*/
+:root {
+  /* 1. PALETA DE CORES (Requisito: 8 cores) */
+  
+  /* Cores Primárias (Ex: Azul para a marca) */
+  --cor-primaria: #444d92;
+  --cor-primaria-escura: #313768;
+
+  /* Cores Secundárias (Ex: Laranja para botões de "Doar") */
+  --cor-secundaria: #e67e22;
+  --cor-secundaria-clara: #f39c12;
+
+  /* Cores Neutras (Fundo, Superfícies, Texto, Bordas) */
+  --cor-fundo: #f4f7f6;        /* para o <body>) */
+  --cor-superficie: #ffffff;  /* (para cards, cabeçalho) */
+  --cor-texto-principal: #333333;
+  --cor-texto-secundario: #555555;
+  --cor-borda: #e0e0e0;
+  
+  /* Cores de Feedback  */
+  --cor-sucesso: #2ecc71;
+  --cor-erro: #e74c3c;
+
+  /* 2. TIPOGRAFIA HIERÁRQUICA (Requisito: 5 tamanhos) */
+  /* Usamos 'rem' para acessibilidade (1rem = 16px por padrão) */
+  --fonte-h1: 2.5rem;   /* 40px */
+  --fonte-h2: 2rem;     /* 32px */
+  --fonte-h3: 1.5rem;   /* 24px */
+  --fonte-normal: 1rem;   /* 16px */
+  --fonte-pequena: 0.875rem; /* 14px */
+  
+  /* Família da Fonte */
+  --fonte-familia-principal: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* 3. SISTEMA DE ESPAÇAMENTO MODULAR (Requisito: Base 8px) */
+  --espaco-xs: 0.5rem;  /* 8px */
+  --espaco-s: 1rem;     /* 16px */
+  --espaco-m: 1.5rem;   /* 24px */
+  --espaco-l: 2rem;     /* 32px */
+  --espaco-xl: 3rem;    /* 48px */
+  --espaco-xxl: 4rem;   /* 64px */
+}
+
+/* ===============================================
+CSS RESET E ESTILOS GLOBAIS (BASE)
+Limpa os estilos do navegador e aplica nossas variáveis.
+===============================================
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Garante que padding não afete a largura total */
+}
+
+body {
+  font-family: var(--fonte-familia-principal);
+  font-size: var(--fonte-normal);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  line-height: 1.6;
+
+  /* REQUISITO: Leiaute principal usando CSS grid */
+  /* Isso divide a página em 3 linhas: cabeçalho, conteúdo (que cresce), rodapé */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh; /* Garante que o body ocupe 100% da altura da tela */
+}
+
+/* Aplica a hierarquia de fontes que eu defini */
+h1 { font-size: var(--fonte-h1); }
+h2 { font-size: var(--fonte-h2); }
+h3 { font-size: var(--fonte-h3); }
+p { font-size: var(--fonte-normal); }
+a { color: var(--cor-primaria); } /* Cor padrão para links */
+
+/* ===============================================
+LEIAUTE (LAYOUT)
+Define o contêiner principal e o sistema de 12 colunas.
+===============================================
+*/
+
+/* O contêiner principal que centraliza o conteúdo */
+.container {
+  width: 90%; /* Responsivo por padrão */
+  max-width: 1140px; /* Largura máxima comum para 12 colunas */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* REQUISITO: Sistema de grid customizado (12 colunas)
+  Vou aplicar isso no .container 
+*/
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--espaco-m); /* 24px de espaçamento entre as colunas */
+}
+
+/* ===============================================
+SISTEMA DE GRID (12 COLUNAS) - CLASSES AUXILIARES
+===============================================
+*/
+
+/* Faz um item ocupar todas as 12 colunas (útil para títulos de seção) */
+.col-12 {
+  grid-column: span 12;
+}
+
+/* Faz um item ocupar metade (6 colunas) */
+.col-6 {
+  grid-column: span 6;
+}
+
+/* Faz um item ocupar um terço (4 colunas) - (Útil para os pilares) */
+.col-4 {
+  grid-column: span 4;
+}
+
+/* Faz um item ocupar dois terços (8 colunas) */
+.col-8 {
+  grid-column: span 8;
+}
