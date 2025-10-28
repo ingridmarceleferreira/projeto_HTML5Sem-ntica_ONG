@@ -662,26 +662,87 @@ Requisitos: Navegação sofisticada.
 
 /* 5. Ajuste no menu mobile (para o dropdown não quebrar) */
 @media (max-width: 991px) {
+  
+  /* 1. Mostre o Botão Hambúrguer */
+  .menu-hamburguer {
+    display: flex;
+  }
+
+  /* 2. Esconda e Posicione o Menu Principal (formato desktop) fora da tela */
+  .menu-principal ul {
+    position: fixed; 
+    top: 0;
+    right: 0;
+    transform: translateX(100%); /* Começa fora da tela */
+    width: 80%; 
+    height: 100vh; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--espaco-l); 
+    background-color: var(--cor-superficie); 
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease-in-out;   
+  }
+  
+  /* 3. Estilo dos links no menu aberto */
+  .menu-principal a {
+     font-size: var(--fonte-h3); /* Links ficam grandes */
+  }
+
+  /* 4. A CLASSE MÁGICA: .menu-aberto (para o JS) */
+  .menu-principal ul.menu-aberto {
+    transform: translateX(0%); /* Traz o menu para a tela */
+  }
+
+  /* 5. Animação do botão (Opcional) */
+  .menu-hamburguer.ativo .hamburguer-linha:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu-hamburguer.ativo .hamburguer-linha:nth-child(2) { opacity: 0; }
+  .menu-hamburguer.ativo .hamburguer-linha:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* 6. Ajustes do Dropdown DENTRO do Menu Mobile */
   .dropdown {
     width: 100%;
     text-align: center;
   }
   
-  /* No mobile, o dropdown já está visível (porque o display: flex foi removido) */
   .dropdown-menu {
-    display: flex; /* Garante que está visível */
-    position: static; /* Remove o posicionamento absoluto */
+    display: flex; /* Garante que está visível DENTRO do menu mobile */
+    position: static; 
     box-shadow: none;
     border: none;
     width: 100%;
     background-color: transparent;
     padding: 0;
-    margin-top: var(--espaco-s); /* Espaço abaixo do link pai */
+    margin-top: var(--espaco-s); 
+    
+    /* Ajustes para o dropdown mobile */
+    flex-direction: column; /* Itens um abaixo do outro */
+    align-items: center; /* Centraliza os itens */
+    gap: var(--espaco-xs); /* Espaço menor entre itens do dropdown */
   }
   
   .dropdown-menu a {
-     font-size: var(--fonte-normal); /* Fonte um pouco menor */
+     font-size: var(--fonte-normal); /* Fonte normal (menor que os links principais) */
      color: var(--cor-texto-secundario);
-     background-color: var(--cor-fundo);
+     background-color: var(--cor-fundo); /* Fundo cinza claro para destacar */
+     width: 80%; /* Para não ocupar a tela toda */
+     border-radius: 5px;
+  }
+} /* <-- FIM DO @media (max-width: 991px) */
+
+/* ===============================================
+REGRA PARA MOSTRAR DROPDOWN NO HOVER (APENAS DESKTOP)
+===============================================
+*/
+@media (min-width: 992px) { 
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    display: block; /* Mostra o submenu no hover do desktop */
+  }
+  
+  /* Esconde o botão hambúrguer no desktop */
+  .menu-hamburguer {
+     display: none;
   }
 }
