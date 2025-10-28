@@ -620,7 +620,7 @@ Requisitos: Navegação sofisticada.
   left: 0;
   
   /* Estilização do card do dropdown */
-  background-color: var(--cor-superficie); 
+  background-color: var(--cor-superficie); /* Fundo branco */
   border: 1px solid var(--cor-borda);
   border-radius: 5px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -652,7 +652,7 @@ Requisitos: Navegação sofisticada.
   color: var(--cor-primaria);
 }
 
-/* 4. Mostrar o dropdown no hover (APENAS EM DESKTOP) */
+/* 4. A MÁGICA: Mostrar o dropdown no hover (APENAS EM DESKTOP) */
 @media (min-width: 992px) { /* (O mesmo breakpoint do menu hambúrguer) */
   .dropdown:hover .dropdown-menu,
   .dropdown:focus-within .dropdown-menu {
