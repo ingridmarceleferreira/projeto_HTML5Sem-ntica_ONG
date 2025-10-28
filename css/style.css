@@ -125,3 +125,87 @@ SISTEMA DE GRID (12 COLUNAS) - CLASSES AUXILIARES
 .col-8 {
   grid-column: span 8;
 }
+
+/* ===============================================
+COMPONENTE: CABEÇALHO (HEADER) E NAVEGAÇÃO
+Requisitos: Flexbox para alinhamento.
+===============================================
+*/
+
+.cabecalho {
+  /* O cabeçalho ocupa 12 colunas no grid do <body> */
+  grid-column: 1 / -1; 
+  
+  /* Estilo com as minhas variáveis */
+  background-color: var(--cor-superficie); /* Fundo branco */
+  border-bottom: 1px solid var(--cor-borda);
+  padding: var(--espaco-s) 0; /* 16px de padding em cima/baixo */
+  
+  /* REQUISITO: Usando Flexbox para alinhar itens internos */
+  display: flex;
+  justify-content: space-between; /* Logo na esquerda, menu na direita */
+  align-items: center; /* Alinha verticalmente */
+  
+  /* Define a largura do conteúdo interno do cabeçalho */
+  /* Usei um .container *dentro* dele */
+}
+
+/* Limitador de largura para o conteúdo do cabeçalho.
+  Coloquei um .container DENTRO do .cabecalho no HTML
+*/
+.cabecalho-container {
+  width: 90%;
+  max-width: 1140px;
+  margin: 0 auto;
+  
+  /* Flexbox para o conteúdo interno */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilização do Logo (que está no HTML) */
+.logo-link img {
+  height: 50px; /* Altura do logo */
+  width: auto;
+  display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+/* Estilização do Menu Principal */
+.menu-principal ul {
+  list-style: none; /* Remove bolinhas */
+  display: flex; /* Coloca links lado a lado */
+  gap: var(--espaco-s); /* 16px de espaço entre os links */
+}
+
+.menu-principal a {
+  text-decoration: none;
+  color: var(--cor-texto-secundario);
+  font-weight: bold;
+  font-size: var(--fonte-pequena); /* 14px */
+  padding: var(--espaco-xs) var(--espaco-s); /* 8px 16px */
+  border-radius: 5px;
+  
+  /* Efeito suave de transição (Requisito: Estados visuais) */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* REQUISITO: Botões com estados visuais (hover, focus) */
+
+.menu-principal a:hover,
+.menu-principal a:focus {
+  background-color: var(--cor-fundo); /* Cinza claro no hover */
+  color: var(--cor-primaria); /* Cor primária no hover */
+}
+
+/* Estilo para o link "Quero Ajudar" (Call to Action) */
+.menu-principal a[href="cadastro.html"] {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-superficie); /* Texto branco */
+}
+
+.menu-principal a[href="cadastro.html"]:hover,
+.menu-principal a[href="cadastro.html"]:focus {
+  background-color: var(--cor-primaria-escura);
+  color: var(--cor-superficie);
+}
