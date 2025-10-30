@@ -613,7 +613,7 @@ Requisitos: Navegação sofisticada.
 }
 
 /* 2. O submenu (a lista aninhada) */
-.dropdown-menu {
+.dropdown-menu > . .dropdown-menu {
   display: none; /* ESCONDIDO por padrão */
   position: absolute; /* Posição absoluta em relação ao <li> pai */
   top: 100%; /* Aparece logo abaixo do link "Nossos Projetos" */
@@ -654,13 +654,14 @@ Requisitos: Navegação sofisticada.
 
 /* 4. A MÁGICA: Mostrar o dropdown no hover (APENAS EM DESKTOP) */
 @media (min-width: 992px) { /* (O mesmo breakpoint do menu hambúrguer) */
-  .dropdown:hover .dropdown-menu,
-  .dropdown:focus-within .dropdown-menu {
+  .dropdown:hover > .dropdown-menu,
+  .dropdown:focus-within > .dropdown-menu {
     display: block; /* Mostra o submenu */
   }
 }
 
 /* 5. Ajuste no menu mobile (para o dropdown não quebrar) */
+
 @media (max-width: 991px) {
   
   /* 1. Mostre o Botão Hambúrguer */
@@ -706,7 +707,7 @@ Requisitos: Navegação sofisticada.
     text-align: center;
   }
   
-  .dropdown-menu {
+  .dropdown-menu > .dropdown-menu{
     display: flex; /* Garante que está visível DENTRO do menu mobile */
     position: static; 
     box-shadow: none;
@@ -730,6 +731,7 @@ Requisitos: Navegação sofisticada.
      border-radius: 5px;
   }
 } /* <-- FIM DO @media (max-width: 991px) */
+ 
 
 /* ===============================================
 REGRA PARA MOSTRAR DROPDOWN NO HOVER (APENAS DESKTOP)
