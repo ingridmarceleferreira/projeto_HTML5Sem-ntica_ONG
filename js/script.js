@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 2. Função Auxiliar para aplicar a máscara
   // (maxLength = tamanho máximo do campo)
-  // (pattern = o formato que queremos, ex: "XXX.XXX.XXX-XX")
+  // (pattern = o formato que quero, ex: "XXX.XXX.XXX-XX")
   const aplicarMascara = (input, pattern, maxLength) => {
     // Pega o valor atual, removendo tudo que NÃO for número
     let valor = input.value.replace(/\D/g, ''); 
