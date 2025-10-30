@@ -734,16 +734,22 @@ Requisitos: Navegação sofisticada.
  
 
 /* ===============================================
-REGRA PARA MOSTRAR DROPDOWN NO HOVER (APENAS DESKTOP)
+REGRA FINAL PARA DROPDOWN NO DESKTOP (CORRIGIDO)
 ===============================================
 */
 @media (min-width: 992px) { 
-  .dropdown:hover .dropdown-menu,
-  .dropdown:focus-within .dropdown-menu {
-    display: block; /* Mostra o submenu no hover do desktop */
+  
+  /* 1. FORÇA o dropdown a ficar escondido por padrão */
+  .dropdown > .dropdown-menu {
+    display: none; 
+  }
+
+  /* 2. MOSTRA o dropdown APENAS no hover (sem :focus-within) */
+  .dropdown:hover > .dropdown-menu { 
+    display: block; 
   }
   
-  /* Esconde o botão hambúrguer no desktop */
+  /* 3. Esconde o botão hambúrguer no desktop */
   .menu-hamburguer {
      display: none;
   }
