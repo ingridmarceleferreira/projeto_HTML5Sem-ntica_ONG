@@ -96,5 +96,48 @@ document.addEventListener('DOMContentLoaded', function() {
       aplicarMascara(inputCEP, 'XXXXX-XXX', 8);
     });
   }
+/* --- 3. FUNCIONALIDADE: VALIDAÇÃO DE FORMULÁRIO (ENTREGA III) --- */
 
+// Encontrar os elementos do formulário e os alertas
+const form = document.getElementById('form-principal-cadastro');
+const alertaSucesso = document.getElementById('alerta-sucesso');
+const alertaErro = document.getElementById('alerta-erro');
+
+// Apenas execute se estivermos na página que tem o formulário
+if (form && alertaSucesso && alertaErro) {
+  
+  // Adiciona um "escutador" para o evento de "submit" (envio)
+  form.addEventListener('submit', function(event) {
+    
+    // 1. Prevenir o Comportamento Padrão
+    // Isso impede a página de recarregar e mostrar o "ERRO 405"
+    event.preventDefault(); 
+    
+    // 2. Esconder alertas antigos (para limpar o estado)
+    alertaSucesso.classList.add('hidden');
+    alertaErro.classList.add('hidden');
+
+    // 3. Verificar a Validade (Usando a API nativa do HTML5)
+    // O .checkValidity() retorna 'true' se todos os campos (com 'required', 'pattern', etc.) estiverem válidos.
+    if (form.checkValidity()) {
+      
+      // SE VÁLIDO: Mostra o alerta de sucesso
+      alertaSucesso.classList.remove('hidden');
+      
+      // Limpar o formulário após o sucesso
+      // form.reset(); 
+      
+      // Rolar para o topo para ver a mensagem
+      window.scrollTo(0, 0);
+
+    } else {
+      
+      // SE INVÁLIDO: Mostra o alerta de erro
+      alertaErro.classList.remove('hidden');
+      
+      // Rolar para o topo para ver a mensagem
+      window.scrollTo(0, 0);
+    }
+  });
+}
 }); // <-- FECHAMENTO DO DOMCONTENTLOADED.
