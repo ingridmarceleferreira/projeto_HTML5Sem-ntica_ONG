@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const listaMenu = document.getElementById('menu-lista');
   
   // --- 1. FUNCIONALIDADE: MENU HAMBÚRGUER ---
-  // (Este código você já tinha)
-  
+   
   if (botaoHamburguer && listaMenu) {
     botaoHamburguer.addEventListener('click', function() {
       listaMenu.classList.toggle('menu-aberto');
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // --- 2. FUNCIONALIDADE: MÁSCARAS (Definição da Função) ---
-  // (Esta é a função que será chamada na carga e na navegação SPA)
+  // 
   
   // Função Auxiliar (privada para 'inicializarMascaras')
   const aplicarMascara = (input, pattern, maxLength) => {
@@ -130,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.title = novoTitulo; // Atualiza o título da aba
         
         // 4.2. RE-INICIALIZA O JS DO FORMULÁRIO (se a página for o cadastro)
-        // (Isso é crucial, pois o innerHTML apagou os listeners antigos)
+        // 
         inicializarMascaras();
         inicializarValidacaoFormulario();
         
