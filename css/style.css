@@ -793,3 +793,12 @@ Requisitos: alerts, toasts, modals.
   border-color: var(--cor-primaria);
   color: #2c387e; /* Azul escuro para o texto */
 }
+
+/* ===============================================
+UTILITÁRIO: CLASSE HIDDEN (para JS)
+Esconde elementos da tela.
+===============================================
+*/
+.hidden {
+  display: none;
+}
