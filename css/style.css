@@ -754,3 +754,42 @@ REGRA FINAL PARA DROPDOWN NO DESKTOP (CORRIGIDO)
      display: none;
   }
 }
+
+/* ===============================================
+COMPONENTE: FEEDBACK (ALERTS)
+Requisitos: alerts, toasts, modals.
+===============================================
+*/
+
+/* 1. Estilo Base do Alerta */
+.alert {
+  padding: var(--espaco-s); /* 16px */
+  margin-bottom: var(--espaco-m); /* 24px de espaço abaixo */
+  border-radius: 5px;
+  border: 1px solid transparent; /* Borda sutil */
+  font-weight: 500;
+  
+  /* Faz o alerta ocupar 12 colunas no grid */
+  grid-column: span 12; 
+}
+
+/* 2. Variação: Alerta de Sucesso (Verde) */
+.alert-sucesso {
+  background-color: #eaf7ec; /* Verde bem claro (derivado de --cor-sucesso) */
+  border-color: var(--cor-sucesso);
+  color: #226b3e; /* Verde escuro para o texto */
+}
+
+/* 3. Variação: Alerta de Erro (Vermelho) */
+.alert-erro {
+  background-color: #fdecea; /* Vermelho bem claro (derivado de --cor-erro) */
+  border-color: var(--cor-erro);
+  color: #a4281a; /* Vermelho escuro para o texto */
+}
+
+/* 4. Variação: Alerta de Informação (Azul) */
+.alert-info {
+  background-color: #e7f3fe; /* Azul bem claro (derivado de --cor-primaria) */
+  border-color: var(--cor-primaria);
+  color: #2c387e; /* Azul escuro para o texto */
+}
