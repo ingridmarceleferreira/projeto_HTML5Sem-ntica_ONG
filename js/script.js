@@ -1,49 +1,32 @@
 /* ===============================================
-FUNCIONALIDADE: MENU HAMBÚRGUER
-Requisitos: Funcionalidades interativas.
+JAVASCRIPT MODULAR - SCRIPT COMPLETO E REORGANIZADO
+O 'DOMContentLoaded' garante que todo o código 
+só rode depois que o HTML estiver pronto.
 ===============================================
 */
-
-// 'DOMContentLoaded' garante que o script só rode
-// depois que todo o HTML foi carregado.
 document.addEventListener('DOMContentLoaded', function() {
 
-  // 1. Encontre os elementos no HTML
+  // --- ELEMENTOS GLOBAIS (Menu) ---
   const botaoHamburguer = document.getElementById('menu-hamburguer');
   const listaMenu = document.getElementById('menu-lista');
-
-  // 2. Verifique se os elementos existem (evita erros)
+  
+  // --- 1. FUNCIONALIDADE: MENU HAMBÚRGUER ---
+  // (Este código você já tinha)
+  
   if (botaoHamburguer && listaMenu) {
-    
-    // 3. Adicione o "escutador de clique" no botão
     botaoHamburguer.addEventListener('click', function() {
-      
-      // 4.  Adiciona ou Remove a classe '.menu-aberto'
       listaMenu.classList.toggle('menu-aberto');
-      
-      // Adiciona ou Remove a classe '.ativo' no botão (para animar o X)
       botaoHamburguer.classList.toggle('ativo');
-
-      // 5. Acessibilidade: Atualiza o 'aria-expanded'
       const estaAberto = listaMenu.classList.contains('menu-aberto');
       botaoHamburguer.setAttribute('aria-expanded', estaAberto);
       botaoHamburguer.setAttribute('aria-label', estaAberto ? 'Fechar menu' : 'Abrir menu');
     });
   }
-  /* ===============================================
-  ENTREGA III - FUNCIONALIDADE: MÁSCARAS DE FORMULÁRIO
-  Requisitos: Verificação de consistência de dados em formulários.
-  ===============================================
-  */
 
-  // 1. Encontrar os campos do formulário
-  const inputCPF = document.getElementById('cpf');
-  const inputTelefone = document.getElementById('telefone');
-  const inputCEP = document.getElementById('cep');
-
-  // 2. Função Auxiliar para aplicar a máscara
-  // (maxLength = tamanho máximo do campo)
-  // (pattern = o formato que quero, ex: "XXX.XXX.XXX-XX")
+  // --- 2. FUNCIONALIDADE: MÁSCARAS (Definição da Função) ---
+  // (Esta é a função que será chamada na carga e na navegação SPA)
+  
+  // Função Auxiliar (privada para 'inicializarMascaras')
   const aplicarMascara = (input, pattern, maxLength) => {
     // Pega o valor atual, removendo tudo que NÃO for número
     let valor = input.value.replace(/\D/g, ''); 
@@ -59,85 +42,136 @@ document.addEventListener('DOMContentLoaded', function() {
     let j = 0;
     while (i < pattern.length && j < valor.length) {
       if (pattern[i] === 'X') {
-        // Se o padrão pede um número ('X'), nós o adicionamos
         valorMascarado += valor[j];
         j++;
       } else {
-        // Se o padrão pede um caractere especial ('.', '-', '(', ')', ' '),
-        // nós o adicionamos
         valorMascarado += pattern[i];
       }
       i++;
     }
-    // Define o valor do input como o valor mascarado
     input.value = valorMascarado;
   };
 
-  // 3. Adicionar os "escutadores de input"
-  
-  // Máscara de CPF (XXX.XXX.XXX-XX)
-  if (inputCPF) {
-    inputCPF.addEventListener('input', () => {
-      // O 'X' representa onde um número deve ir
-      aplicarMascara(inputCPF, 'XXX.XXX.XXX-XX', 11);
-    });
-  }
+  function inicializarMascaras() {
+    const inputCPF = document.getElementById('cpf');
+    const inputTelefone = document.getElementById('telefone');
+    const inputCEP = document.getElementById('cep');
 
-  // Máscara de Telefone ((XX) XXXXX-XXXX)
-  if (inputTelefone) {
-    inputTelefone.addEventListener('input', () => {
-      aplicarMascara(inputTelefone, '(XX) XXXXX-XXXX', 11);
-    });
-  }
-
-  // Máscara de CEP (XXXXX-XXX)
-  if (inputCEP) {
-    inputCEP.addEventListener('input', () => {
-      aplicarMascara(inputCEP, 'XXXXX-XXX', 8);
-    });
-  }
-/* --- 3. FUNCIONALIDADE: VALIDAÇÃO DE FORMULÁRIO (ENTREGA III) --- */
-
-// Encontrar os elementos do formulário e os alertas
-const form = document.getElementById('form-principal-cadastro');
-const alertaSucesso = document.getElementById('alerta-sucesso');
-const alertaErro = document.getElementById('alerta-erro');
-
-// Apenas execute se estivermos na página que tem o formulário
-if (form && alertaSucesso && alertaErro) {
-  
-  // Adiciona um "escutador" para o evento de "submit" (envio)
-  form.addEventListener('submit', function(event) {
-    
-    // 1. Prevenir o Comportamento Padrão
-    // Isso impede a página de recarregar e mostrar o "ERRO 405"
-    event.preventDefault(); 
-    
-    // 2. Esconder alertas antigos (para limpar o estado)
-    alertaSucesso.classList.add('hidden');
-    alertaErro.classList.add('hidden');
-
-    // 3. Verificar a Validade (Usando a API nativa do HTML5)
-    // O .checkValidity() retorna 'true' se todos os campos (com 'required', 'pattern', etc.) estiverem válidos.
-    if (form.checkValidity()) {
-      
-      // SE VÁLIDO: Mostra o alerta de sucesso
-      alertaSucesso.classList.remove('hidden');
-      
-      // Limpar o formulário após o sucesso
-      // form.reset(); 
-      
-      // Rolar para o topo para ver a mensagem
-      window.scrollTo(0, 0);
-
-    } else {
-      
-      // SE INVÁLIDO: Mostra o alerta de erro
-      alertaErro.classList.remove('hidden');
-      
-      // Rolar para o topo para ver a mensagem
-      window.scrollTo(0, 0);
+    if (inputCPF) {
+      inputCPF.addEventListener('input', () => {
+        aplicarMascara(inputCPF, 'XXX.XXX.XXX-XX', 11);
+      });
     }
+    if (inputTelefone) {
+      inputTelefone.addEventListener('input', () => {
+        aplicarMascara(inputTelefone, '(XX) XXXXX-XXXX', 11);
+      });
+    }
+    if (inputCEP) {
+      inputCEP.addEventListener('input', () => {
+        aplicarMascara(inputCEP, 'XXXXX-XXX', 8);
+      });
+    }
+  }
+
+  // --- 3. FUNCIONALIDADE: VALIDAÇÃO (Definição da Função) ---
+  // (Esta é a função que será chamada na carga e na navegação SPA)
+  
+  function inicializarValidacaoFormulario() {
+    const form = document.getElementById('form-principal-cadastro');
+    const alertaSucesso = document.getElementById('alerta-sucesso');
+    const alertaErro = document.getElementById('alerta-erro');
+
+    if (form && alertaSucesso && alertaErro) {
+      form.addEventListener('submit', function(event) {
+        // 1. Prevenir o Comportamento Padrão
+        event.preventDefault(); 
+        
+        // 2. Esconder alertas antigos
+        alertaSucesso.classList.add('hidden');
+        alertaErro.classList.add('hidden');
+
+        // 3. Verificar a Validade
+        if (form.checkValidity()) {
+          alertaSucesso.classList.remove('hidden');
+          window.scrollTo(0, 0);
+        } else {
+          alertaErro.classList.remove('hidden');
+          window.scrollTo(0, 0);
+        }
+      });
+    }
+  }
+
+  // --- 4. FUNCIONALIDADE: ROTEAMENTO BÁSICO SPA (ENTREGA III) ---
+  
+  const mainContainer = document.querySelector('main.container');
+
+  const carregarConteudo = async (url) => {
+    try {
+      // Busca o arquivo HTML
+      const resposta = await fetch(url);
+      if (!resposta.ok) {
+        throw new Error(`Erro: ${resposta.status}`);
+      }
+      const textoHtml = await resposta.text();
+      
+      // Converte o texto em um documento
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(textoHtml, 'text/html');
+      
+      // Pega o <main> e o <title> novos
+      const novoMain = doc.querySelector('main.container');
+      const novoTitulo = doc.querySelector('title').innerText;
+
+      if (novoMain && mainContainer) {
+        // 4.1. Injeta o novo conteúdo
+        mainContainer.innerHTML = novoMain.innerHTML; 
+        document.title = novoTitulo; // Atualiza o título da aba
+        
+        // 4.2. RE-INICIALIZA O JS DO FORMULÁRIO (se a página for o cadastro)
+        // (Isso é crucial, pois o innerHTML apagou os listeners antigos)
+        inicializarMascaras();
+        inicializarValidacaoFormulario();
+        
+      } else {
+        // Fallback: Se algo der errado, recarrega a página
+        window.location.href = url;
+      }
+    } catch (erro) {
+      console.error('Erro no roteamento SPA:', erro);
+      window.location.href = url; // Fallback
+    }
+  };
+
+  // 5. Interceptar cliques nos links do menu
+  const linksSPA = document.querySelectorAll('.menu-principal a[href$=".html"]');
+
+  linksSPA.forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Impede o recarregamento
+      const url = link.getAttribute('href');
+      
+      // Atualiza a URL na barra (sem recarregar)
+      history.pushState(null, '', url);
+      
+      // Carrega o novo conteúdo
+      carregarConteudo(url);
+
+      // Fecha o menu mobile (se estiver aberto)
+      if (listaMenu.classList.contains('menu-aberto')) {
+        listaMenu.classList.remove('menu-aberto');
+        botaoHamburguer.classList.remove('ativo');
+        botaoHamburguer.setAttribute('aria-expanded', 'false');
+        botaoHamburguer.setAttribute('aria-label', 'Abrir menu');
+      }
+    });
   });
-}
-}); // <-- FECHAMENTO DO DOMCONTENTLOADED.
+
+  // --- INICIALIZAÇÃO (Roda na primeira carga) ---
+  // (Garante que as máscaras e a validação funcionem na página
+  // que foi carregada primeiro (ex: index.html ou cadastro.html))
+  inicializarMascaras();
+  inicializarValidacaoFormulario();
+
+}); // <-- FIM DO 'DOMContentLoaded'
