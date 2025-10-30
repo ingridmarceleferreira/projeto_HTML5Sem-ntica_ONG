@@ -11,7 +11,7 @@ Define as cores, fontes e espaçamentos do projeto.
   --cor-primaria-escura: #313768;
 
   /* Cores Secundárias (Ex: Laranja para botões de "Doar") */
-  --cor-secundaria: #e67e22;
+  --cor-secundaria: #D96D00; /*laranja acessível (contraste 4.54:1)*/
   --cor-secundaria-clara: #f39c12;
 
   /* Cores Neutras (Fundo, Superfícies, Texto, Bordas) */
