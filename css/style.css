@@ -802,3 +802,64 @@ Esconde elementos da tela.
 .hidden {
   display: none;
 }
+
+/* ===============================================
+ENTREGA IV - ACESSIBILIDADE: MODO ESCURO (DARK MODE)
+Requisitos: Versão de alto contraste.
+===============================================
+*/
+
+/* * Esta media query detecta se o sistema operacional * do usuário prefere o esquema de cores escuro. */
+@media (prefers-color-scheme: dark) {
+
+    :root {
+    /* 1. PALETA DE CORES (MODO ESCURO) */
+
+    /* Cores Primárias (mantem a mesma) */
+    /* --cor-primaria: #444d92; (Mantém a mesma) */
+    /* --cor-primaria-escura: #313768; (Mantém a mesma) */
+
+    /* Cores Secundárias (O laranja precisa de ajuste para o fundo escuro) */
+    /* --cor-secundaria: #D96D00; (Mantém a mesma) */
+    
+    /* * Cores Neutras  
+     * Inverti o fundo e o texto.
+     */
+    --cor-fundo: #121212;        /* Fundo escuro  */
+    --cor-superficie: #1e1e1e;  /* Superfície (cards) um pouco mais clara */
+    --cor-texto-principal: #e0e0e0; /* Texto principal (cinza claro) */
+    --cor-texto-secundario: #b0b0b0; /* Texto secundário (cinza médio) */
+    --cor-borda: #444444;       /* Bordas mais claras que o fundo */
+  }
+  
+  /* * Ajustes Finos  */
+  
+  /* Inputs de Formulário no Modo Escuro */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background-color: var(--cor-borda); /* Fundo do input mais escuro */
+    color: var(--cor-texto-principal); /* Texto claro */
+    border-color: var(--cor-borda); /* Borda escura */
+  }
+
+  /* Dropdown no Modo Escuro */
+  .dropdown-menu a {
+     background-color: var(--cor-fundo);
+  }
+  
+  /* Alertas no Modo Escuro (Precisam de novas cores) */
+  .alert-sucesso {
+    background-color: #1a3b2a;
+    color: #a3e9c0;
+  }
+  .alert-erro {
+    background-color: #4d1b1a;
+    color: #f7baba;
+  }
+  .alert-info {
+    background-color: #1a2c4d;
+    color: #b0c4ff;
+  }
+
+} /* Fim do @media prefers-color-scheme: dark */
