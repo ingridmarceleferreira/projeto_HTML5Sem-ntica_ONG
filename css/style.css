@@ -322,7 +322,6 @@ Requisitos: Botões com estados visuais (hover, focus, active).
 
 .btn:hover,
 .btn:focus {
-  outline: none;
   /* Escurece ou muda a cor no hover/focus */
   transform: translateY(-2px); /* Efeito sutil de levantar */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -439,7 +438,6 @@ legend {
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-  outline: none; /* Remove o contorno padrão do navegador */
   border-color: var(--cor-primaria); /* Muda a cor da borda para a cor primária */
   box-shadow: 0 0 0 3px rgba(68, 77, 146, 0.1); /* Adiciona um brilho sutil */
 }
@@ -863,3 +861,24 @@ Requisitos: Versão de alto contraste.
   }
 
 } /* Fim do @media prefers-color-scheme: dark */
+
+/* ===============================================
+ENTREGA IV - ACESSIBILIDADE: FOCO DE TECLADO
+Requisitos: Navegação por teclado (WCAG).
+===============================================
+*/
+
+/* * Remove o 'outline' feio quando clicamos com o MOUSE,
+ * mas o MANTÉM quando navegamos com o TECLADO.
+ */
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none; /* Remove os box-shadows de foco se for clique */
+}
+
+/* * ESTE é o estilo para quem usa a TECLA TAB */
+:focus-visible {
+  outline: 3px solid var(--cor-primaria); /* Contorno azul forte */
+  outline-offset: 2px; /* Espaço entre o elemento e o contorno */
+  box-shadow: 0 0 0 5px rgba(68, 77, 146, 0.2); /* Brilho extra */
+}
