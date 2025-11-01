@@ -1,26 +1,50 @@
-# projeto_HTML5Semantica_ONG
-Sistema web completo que oferece às ONGs uma presença digital profissional e funcional.
-O sistema contempla diferentes tipos de usuários e funcionalidades específicas para cada perfil: Administrador da ONG, Voluntário, Doador/apoiador;
-Visitante.
-Funcionalidades Principais
+# 🚀 Projeto Plataforma de ONG (Prato Cheio, Futuro Certo)
 
-• Área institucional: página inicial com missão, visão e valores; histórico e conquistas da organização; equipe e estrutura organizacional; relatórios de transparência;
+Este projeto é a entrega final da disciplina de Desenvolvimento Web Front-End, simulando a criação de uma plataforma web completa, profissional e responsiva para uma ONG fictícia.
 
-• Gestão de projetos: cadastro detalhado de projetos sociais; galeria de fotos e vídeos; indicadores de impacto e resultados; sistema de categorização;
+O sistema foi construído de forma incremental, aplicando conceitos de HTML5 Semântico (Entrega I), CSS3 Avançado e Responsividade (Entrega II), JavaScript Interativo (Entrega III) e Práticas Profissionais de Acessibilidade e Versionamento (Entrega IV).
 
-• Engajamento de voluntários: portal de oportunidades de voluntariado; sistema de inscrição e seleção; área do voluntário com histórico; certificados digitais de participação;
+---
 
-• Captação de recursos: campanhas de arrecadação; sistema de doações on-line; metas e progresso em tempo real; relatórios de prestação de contas;
+## ✨ Funcionalidades Principais (Features)
 
-• Comunicação e transparência: blog com notícias e atualizações; newsletter para engajamento; área de imprensa com releases; central de documentos públicos.
+A plataforma implementa um conjunto robusto de funcionalidades focadas no engajamento do usuário e na gestão da ONG:
 
-CARACTERÍSTICAS TÉCNICAS:
-• Responsividade: design mobile-first; compatibilidade com tablets e desktops; breakpoints bem definidos; imagens e mídias adaptáveis;
+* **Layout Responsivo (Mobile-First):** Construído com um sistema de Grid de 12 colunas customizado e Flexbox.
+* **Navegação Sofisticada:** Inclui um menu principal com dropdown e um menu hambúrguer totalmente funcional para dispositivos móveis.
+* **SPA (Single Page Application):** O site usa `fetch` e `DOMParser` para carregar conteúdo (como as páginas de Projetos e Cadastro) dinamicamente, sem recarregar a página.
+* **Formulários Avançados:** Formulário de cadastro com validação visual (CSS `:invalid`) e funcional (JavaScript).
+* **Máscaras de Input:** Verificação de consistência de dados com máscaras automáticas para CPF, Telefone e CEP.
+* **Feedback Dinâmico:** Componentes de Alerta (Sucesso/Erro) que aparecem dinamicamente no envio de formulários.
+* **Sistema de Componentes CSS:** Inclui Cards, Botões com estados (`:hover`, `:focus`) e Badges/Tags.
 
-• Desempenho: tempo de carregamento inferior a 5 segundos; otimização de imagens e recursos; lazy loading para conteúdo extenso; minificação de CSS e JavaScript;
+### ♿ Acessibilidade (WCAG 2.1 Nível AA)
+O projeto foi desenvolvido com foco em acessibilidade:
 
-• Acessibilidade: conformidade com WCAG 2.1 nível AA; navegação por teclado; suporte a leitores de tela; contraste adequado de cores;
+* **Modo Escuro (Dark Mode):** Detecta a preferência do sistema (`prefers-color-scheme`) e aplica um tema escuro de alto contraste.
+* **Navegação por Teclado:** Suporte completo para navegação via tecla `Tab`, utilizando `:focus-visible` para anéis de foco claros.
+* **Suporte a Leitores de Tela:** Uso de HTML Semântico (`<main>`, `<nav>`), hierarquia de títulos correta e atributos ARIA (`aria-label`, `aria-expanded`).
+* **Contraste de Cores:** A paleta de cores foi validada para garantir um contraste mínimo de 4.5:1.
 
-• Segurança: implementação de HTTPS; validação de formulários;
+---
 
-• SEO e descoberta: meta tags otimizadas; estrutura semântica adequada.
+## 🛠️ Tecnologias Utilizadas
+
+* **HTML5:** Estrutura semântica, formulários avançados.
+* **CSS3:** Variáveis CSS (Sistema de Design), Flexbox, CSS Grid, Media Queries (Mobile-First), Animações (`:hover`, `transition`).
+* **JavaScript (ES6+):** Manipulação do DOM, Event Listeners, `fetch` (Async/Await), `DOMParser` e roteamento SPA básico.
+* **Git & GitHub:** Fluxo de trabalho GitFlow (branches `develop` e `feature`), Pull Requests documentados e Commits Semânticos.
+
+---
+
+## 🚀 Como Visualizar o Projeto
+
+1.  Clone este repositório: `git clone https://github.com/ingridmarceleferreira/projeto_HTML5Semantica_ONG
+2.  Abra o arquivo `index.html` no seu navegador de preferência.
+3.  (Recomendado) Use a extensão "Live Server" no VS Code para habilitar o roteamento SPA.
+
+---
+
+## 👩‍💻 Autora
+
+* **[Ingrid Marcele Ferreira de Assis]** - [https://www.linkedin.com/in/ingrid-marcele-ferreira]
